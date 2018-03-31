@@ -8,9 +8,8 @@ const cube = '<i class="fa fa-cube"></i>';
 const leaf = '<i class="fa fa-leaf"></i>';
 const bicycle = '<i class="fa fa-bicycle"></i>';
 const bomb = '<i class="fa fa-bomb"></i>';
-/*
- * Create a list that holds all of your cards
- */
+//deck of all cards in game
+const deck = document.querySelector('.deck');
 // cards array holds all cards
 const card = document.getElementsByClassName('card');
 let cards = [...card];
@@ -42,6 +41,15 @@ function shuffle(array) {
     }
 
     return array;
+}
+//shuffles cards when site page is refreshed/load
+window.onload = startGame();
+
+//start game function will shuffle and display each card
+function startGame(){
+  // shuffle this deck
+  let shuffledCards = shuffle(cards);
+
 }
 
 /**** Event Listener ****/
