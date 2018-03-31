@@ -49,7 +49,14 @@ window.onload = startGame();
 function startGame(){
   // shuffle this deck
   let shuffledCards = shuffle(cards);
-
+  // remove all existing classes from each card on the deck
+  for (var i = 0; i < shuffledCards.length; i++){
+    deck.innerHTML = '';
+    [].forEach.call(shuffledCards, function(item){
+      deck.appendChild(item);
+    });
+    shuffledCards[i].classList.remove('show', 'open', 'match', 'disabled');
+  }
 }
 
 /**** Event Listener ****/
