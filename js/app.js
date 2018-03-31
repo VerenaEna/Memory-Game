@@ -57,7 +57,7 @@ function shuffle(array) {
  */
 
 //loop to add event listeners to each card
-for (var i = 0, i < cards.length; i++){
+for (var i = 0; i < cards.length; i++){
   let card = cards[i];
   card.addEventListener('click', displayCard);
 }
