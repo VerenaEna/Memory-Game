@@ -1,7 +1,5 @@
-/*
- * Create a list that holds all of your cards
- */
-//variable cards icons 
+/**** All Variables ****/
+//variable cards icons
 const diamond = '<i class="fa fa-diamond"></i>';
 const plane = '<i class="fa fa-paper-plane-o"></i>';
 const anchor = '<i class="fa fa-anchor"></i>';
@@ -10,6 +8,13 @@ const cube = '<i class="fa fa-cube"></i>';
 const leaf = '<i class="fa fa-leaf"></i>';
 const bicycle = '<i class="fa fa-bicycle"></i>';
 const bomb = '<i class="fa fa-bomb"></i>';
+/*
+ * Create a list that holds all of your cards
+ */
+// cards array holds all cards
+const card = document.getElementsByClassName('card');
+let cards = [...card];
+console.log(cards);
 
 
 
