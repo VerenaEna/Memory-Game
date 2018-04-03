@@ -14,6 +14,8 @@ const deck = document.querySelector('.deck');
 const card = document.getElementsByClassName('card');
 let cards = [...card];
 console.log(cards);
+//array or opend opend cards
+let openedCards = [];
 
 /**** All Functions ****/
 /*
@@ -59,6 +61,11 @@ function startGame(){
   }
 }
 
+//add opened cards to OpenedCards array and
+function cardOpen(){
+  openedCards.push(this);
+}
+
 /**** Event Listener ****/
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -75,4 +82,5 @@ function startGame(){
 for (var i = 0; i < cards.length; i++){
   let card = cards[i];
   card.addEventListener('click', displayCard);
+  card.addEventListener('click', cardOpen);
 }
