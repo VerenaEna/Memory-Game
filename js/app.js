@@ -8,7 +8,7 @@ console.log(cards);
 let moves = 0;
 let counter = document.getElementsByClassName('moves');
 // define star icon Variable
-const stars = document.querySelector('.stars li');
+const stars = document.querySelectorAll('.fa-star');
 //deck of all cards in game
 const deck = document.getElementById('card-deck');
 //variable of matchedCards
@@ -47,6 +47,10 @@ function startGame(){
       deck.appendChild(item);
     });
     cards[i].classList.remove('show', 'open', 'match', 'disabled');
+  }
+  // set/reset star rating
+  for (var i = 0; i < stars.length; i++){
+    stars[i].style.visibility = "visible";
   }
 }
 
@@ -123,17 +127,17 @@ function moveCounter(){
     startTimer();
   }
   //set rates based on Moves
-  if (moves > 23 && moves < 36){
+  if (moves > 20 && moves < 30){
     for(i = 0; i < 3; i++){
       if(i > 1){
         stars[i].style.visibility = "collapse";
       }
     }
   }
-  if(moves > 37){
+  else if(moves > 31){
     for(i = 0; i < 3; i++){
       if(i > 0){
-        stars[i].style.visibilty = "collapse";
+        stars[i].style.visibility = "collapse";
       }
     }
   }
