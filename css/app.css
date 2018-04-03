@@ -69,6 +69,9 @@ h1 {
     transform: rotateY(0);
     background: #02b3e4;
     cursor: default;
+    animation-name: flipInY;
+    backface-visibility: visible;
+    animation-duration: 0.75s;
 }
 
 .deck .card.show {
@@ -79,6 +82,22 @@ h1 {
     cursor: default;
     background: #02ccba;
     font-size: 33px;
+    animation-name: rubberBand;
+    backface-visibility: visible;
+    animation-duration: 0.75s;
+}
+
+.deck .card.unmatched {
+    background: #e2043b;
+    font-size: 33px;
+    animation-name: pulse;
+    backface-visibility: visible;
+    animation-duration: 0.75s;
+}
+
+.deck .card.disabled {
+    pointer-events: none;
+    opacity: 0.9;
 }
 
 /*

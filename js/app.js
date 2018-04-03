@@ -1,25 +1,18 @@
 /**** All Variables ****/
-//deck of all cards in game
-const deck = document.querySelector('.deck');
+
 // cards array holds all cards
-const card = document.getElementsByClassName('card');
+let card = document.getElementsByClassName('card');
 let cards = [...card];
 console.log(cards);
+//deck of all cards in game
+const deck = document.getElementById('card-deck');
+//variable of matchedCards
+let matchedCard = document.getElementsByClassName('match');
 //array or opend opend cards
 let openedCards = [];
 
+
 /**** All Functions ****/
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
- var displayCard = function (){
-   this.classList.toggle('open');
-   this.classList.toggle('show');
-   this.classList.toggle('disabled');
- }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -41,21 +34,33 @@ window.onload = startGame();
 //start game function will shuffle and display each card
 function startGame(){
   // shuffle this deck
-  let shuffledCards = shuffle(cards);
+ cards = shuffle(cards);
   // remove all existing classes from each card on the deck
-  for (var i = 0; i < shuffledCards.length; i++){
+  for (var i = 0; i < cards.length; i++){
     deck.innerHTML = '';
-    [].forEach.call(shuffledCards, function(item){
+    [].forEach.call(cards, function(item){
       deck.appendChild(item);
     });
-    shuffledCards[i].classList.remove('show', 'open', 'match', 'disabled');
+    cards[i].classList.remove('show', 'open', 'match', 'disabled');
   }
 }
+
+/*
+ * Display the cards on the page
+ *   - shuffle the list of cards using the provided "shuffle" method below
+ *   - loop through each card and create its HTML
+ *   - add each card's HTML to the page
+ */
+ var displayCard = function (){
+   this.classList.toggle('open');
+   this.classList.toggle('show');
+   this.classList.toggle('disabled');
+ }
 
 //add opened cards to OpenedCards array and
 function cardOpen(){
   openedCards.push(this);
-  const len = openedCards.length;
+  let len = openedCards.length;
   //check if 2 cards match/unmatch
   if(len === 2){
     if(openedCards[0].type === openedCards[1].type){
@@ -68,24 +73,24 @@ function cardOpen(){
 
 //if cards match add classList and remove others
 function matched(){
-  openedCards[0].classList.add('match');
-  openedCards[1].classList.add('match');
-  openedCards[0].classList.remove('show', 'open');
-  openedCards[1].classList.remove('show', 'open');
+  openedCards[0].classList.add('match', 'disabled');
+  openedCards[1].classList.add('match', 'disabled');
+  openedCards[0].classList.remove('show', 'open', 'no-event');
+  openedCards[1].classList.remove('show', 'open', 'no-event');
   openedCards = [];
 }
 
 //if cards don't match
 function unmatched(){
-  openedCards[0].classList.add('unmatch');
-  openedCards[1].classList.add('unmatch');
+  openedCards[0].classList.add('unmatched');
+  openedCards[1].classList.add('unmatched');
   disable();
   setTimeout(function(){
-    openedCards[0].classList.remove('show', 'open', 'unmatched');
-    openedCards[1].classList.remove('show', 'open', 'unmatched');
+    openedCards[0].classList.remove('show', 'open', 'no-event', 'unmatched');
+    openedCards[1].classList.remove('show', 'open', 'no-event', 'unmatched');
     enable();
     openedCards = [];
-  }, 1000);
+  },1100);
 }
 
 //disable temporarly cards
@@ -119,7 +124,7 @@ function enable(){
 
 //loop to add event listeners to each card
 for (var i = 0; i < cards.length; i++){
-  let card = cards[i];
+  card = cards[i];
   card.addEventListener('click', displayCard);
   card.addEventListener('click', cardOpen);
-}
+};
