@@ -42,6 +42,7 @@ function shuffle(array) {
 window.onload = startGame();
 
 //function start game will shuffle and display each card
+// click on restart button - reset star rating, move counting, deck visibility
 function startGame(){
   // shuffle this deck
  cards = shuffle(cards);
