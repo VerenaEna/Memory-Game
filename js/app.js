@@ -5,7 +5,7 @@ let card = document.getElementsByClassName('card');
 let cards = [...card];
 console.log(cards);
 //deck of all cards in game
-const deck = document.getElementById('card-deck');
+const deck = document.getElementById('deck');
 //variable of matchedCards
 let matchedCard = document.getElementsByClassName('match');
 //array or opend opend cards
