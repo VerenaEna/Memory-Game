@@ -1,13 +1,4 @@
 /**** All Variables ****/
-//variable cards icons
-const diamond = '<i class="fa fa-diamond"></i>';
-const plane = '<i class="fa fa-paper-plane-o"></i>';
-const anchor = '<i class="fa fa-anchor"></i>';
-const bolt = '<i class="fa fa-bolt"></i>';
-const cube = '<i class="fa fa-cube"></i>';
-const leaf = '<i class="fa fa-leaf"></i>';
-const bicycle = '<i class="fa fa-bicycle"></i>';
-const bomb = '<i class="fa fa-bomb"></i>';
 //deck of all cards in game
 const deck = document.querySelector('.deck');
 // cards array holds all cards
@@ -64,6 +55,54 @@ function startGame(){
 //add opened cards to OpenedCards array and
 function cardOpen(){
   openedCards.push(this);
+  const len = openedCards.length;
+  //check if 2 cards match/unmatch
+  if(len === 2){
+    if(openedCards[0].type === openedCards[1].type){
+      matched();
+    } else {
+      unmatched();
+    }
+  }
+};
+
+//if cards match add classList and remove others
+function matched(){
+  openedCards[0].classList.add('match');
+  openedCards[1].classList.add('match');
+  openedCards[0].classList.remove('show', 'open');
+  openedCards[1].classList.remove('show', 'open');
+  openedCards = [];
+}
+
+//if cards don't match
+function unmatched(){
+  openedCards[0].classList.add('unmatch');
+  openedCards[1].classList.add('unmatch');
+  disable();
+  setTimeout(function(){
+    openedCards[0].classList.remove('show', 'open', 'unmatched');
+    openedCards[1].classList.remove('show', 'open', 'unmatched');
+    enable();
+    openedCards = [];
+  }, 1000);
+}
+
+//disable temporarly cards
+function disable(){
+  Array.prototype.filter.call(cards, function(card){
+    card.classList.add('disabled');
+  });
+}
+
+//enable cards and disable matched OpenedCards
+function enable(){
+  Array.prototype.filter.call(cards, function(card){
+    card.classList.remove('disabled');
+    for(var i = 0; i < matchedCard.length; i++){
+      matchedCard[i].classList.add('disabled');
+    }
+  });
 }
 
 /**** Event Listener ****/
