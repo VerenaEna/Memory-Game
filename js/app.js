@@ -46,7 +46,7 @@ function shuffle(array) {
     return array;
 }
 //shuffles cards when site page is refreshed/load
-window.onload = startGame();
+document.body.onload = startGame();
 
 //function start game will shuffle and display each card
 // click on restart button - reset star rating, move counting, deck visibility
@@ -165,6 +165,7 @@ function moveCounter(){
 }
 // define for startTimer
 var interval;
+// timer function
 function startTimer(){
   interval = setInterval(function(){
     timer.innerHTML = minute + ' min ' + second + ' sec ';
@@ -179,13 +180,13 @@ function startTimer(){
     }
   }, 1000);
 }
-
+// winner modal if player found all pairs
 function winner(){
-  if(matchedCard.length == 16){
+  if(matchedCard.length == 16){ // if player found 16 pairs
     clearInterval(interval);
-    finalTime = timer.innerHTML;
-    // show winner modal
-    modal.classList.add('show');
+    finalTime = timer.innerHTML; //show final Time
+    // add class to winner modal
+    modal.classList.add('show');// to show on page
     //define star rating Variable
     const starRating = document.querySelector('.stars').innerHTML;
     //show move, rating and time on modal
@@ -201,16 +202,6 @@ function playAgain(){
   modal.classList.remove('show');
   startGame();
 }
-
-/**** Event Listener ****/
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
 
 //loop to add event listeners to each card
 for (var i = 0; i < cards.length; i++){
