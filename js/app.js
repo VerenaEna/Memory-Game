@@ -5,7 +5,7 @@ let card = document.getElementsByClassName('card');
 let cards = [...card];
 console.log(cards);
 //deck of all cards in game
-const deck = document.getElementById('deck');
+const deck = document.getElementById('card-deck');
 //variable of matchedCards
 let matchedCard = document.getElementsByClassName('match');
 //array or opend opend cards
@@ -90,7 +90,7 @@ function unmatched(){
     openedCards[1].classList.remove('show', 'open', 'no-event', 'unmatched');
     enable();
     openedCards = [];
-  },1100);
+  },1000);
 }
 
 //disable temporarly cards
