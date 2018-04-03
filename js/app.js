@@ -60,6 +60,11 @@ function startGame(){
   // reset moves
   moves = 0;
   counter.innerHTML = moves;
+  // reset timer and show when page load/reload
+  second = 0;
+  minute = 0;
+  timer.innerHTML = minute + ' min ' + second + ' sec';
+  clearInterval(interval);
 }
 
  var displayCard = function (){
@@ -154,7 +159,7 @@ function moveCounter(){
 var interval;
 function startTimer(){
   interval = setInterval(function(){
-    timer.innerHTML = minute + 'min ' + second + 'sec ';
+    timer.innerHTML = minute + ' min ' + second + ' sec ';
     second++;
     if(second == 60){
       minute++;
