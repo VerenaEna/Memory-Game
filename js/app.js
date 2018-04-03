@@ -7,11 +7,7 @@ console.log(cards);
 // move Variable
 let moves = 0;
 let counter = document.getElementsByClassName('moves');
-// define for startTimer
-let second = 0;
-let minute = 0;
-let hour = 0;
-const timer = document.querySelector('.timer');
+
 //deck of all cards in game
 const deck = document.getElementById('card-deck');
 //variable of matchedCards
@@ -126,11 +122,14 @@ function moveCounter(){
     startTimer();
   }
 }
+// define for startTimer
+let second = 0, minute = 0, hour = 0;
+let timer = document.querySelector('.timer');
 var interval;
 function startTimer(){
   interval = setInterval(function(){
     timer.innerHTML = minute + 'min ' + second + 'sec ';
-    second++
+    second++;
     if(second == 60){
       minute++;
       second = 0;
