@@ -4,11 +4,19 @@
 let card = document.getElementsByClassName('card');
 let cards = [...card];
 console.log(cards);
+// move Variable
+let moves = 0;
+let counter = document.getElementsByClassName('moves');
+// define for startTimer
+let second = 0;
+let minute = 0;
+let hour = 0;
+const timer = document.querySelector('.timer');
 //deck of all cards in game
 const deck = document.getElementById('card-deck');
 //variable of matchedCards
 let matchedCard = document.getElementsByClassName('match');
-//array or opend opend cards
+//array opend cards
 let openedCards = [];
 
 
@@ -57,6 +65,7 @@ function cardOpen(){
   let len = openedCards.length;
   //check if 2 cards match/unmatch
   if(len === 2){
+    moveCounter();
     if(openedCards[0].type === openedCards[1].type){
       matched();
     } else {
@@ -103,6 +112,34 @@ function enable(){
       matchedCard[i].classList.add('disabled');
     }
   });
+}
+
+// count player move
+function moveCounter(){
+  moves++;
+  counter.innerHTML = moves;
+  //start timer on first click
+  if(moves == 1){
+    second = 0;
+    minute = 0;
+    hour = 0;
+    startTimer();
+  }
+}
+var interval;
+function startTimer(){
+  interval = setInterval(function(){
+    timer.innerHTML = minute + 'min ' + second + 'sec ';
+    second++
+    if(second == 60){
+      minute++;
+      second = 0;
+    }
+    if(minute == 60){
+      hour++;
+      minute = 0;
+    }
+  }, 1000);
 }
 
 /**** Event Listener ****/
