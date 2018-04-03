@@ -46,9 +46,9 @@ window.onload = startGame();
 function startGame(){
   // shuffle this deck
  cards = shuffle(cards);
-  // remove all existing classes from each card on the deck
+  // remove all default classes from each card on the deck
   for (var i = 0; i < cards.length; i++){
-    deck.innerHTML = '';
+    deck.innerHTML = ''; // empty deck
     [].forEach.call(cards, function(item){
       deck.appendChild(item);
     });
