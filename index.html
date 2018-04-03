@@ -80,6 +80,32 @@
                 <i class="fa fa-cube"></i>
             </li>
         </ul>
+
+        <div id="popup1" class="overlay">
+          <div class="popup">
+            <h2>Wohooo</h2>
+            <a class="close" href="#">
+              <i class="fa fa-times"></i>
+            </a>
+            <div class="content-1">
+              <p>
+                Congrat! You found all pairs!
+              </p>
+            </div>
+            <div class="content-2">
+              <p>
+                You made <span id="finalMove"></span></span>moves
+              </p>
+              <p>
+                in <span id="totalTime"></span>
+              </p>
+              <p>
+                Your star rating: <span id="starRating"></span>
+              </p>
+            </div>
+            <button id="playAgain" onclick="playAgain()">Play again</button>
+          </div>
+        </div>
     </div>
 
     <script src="js/app.js"></script>

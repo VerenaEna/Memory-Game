@@ -130,3 +130,64 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+/*
+ * Styles for the winner modal
+ */
+
+ .overlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   right: 0;
+   background: rgba(0, 0, 0, 0.8);
+   transition: opacity 500ms;
+   visibility: hidden;
+   opacity: 0;
+ }
+
+ .overlay:target {
+   visibility: visible;
+   opacity: 1;
+ }
+
+.popup {
+  background: #fff;
+  width: 85%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup .close{
+  transition: all 200ms;
+  text-decoration: none;
+  color: #333;
+}
+
+.popup .close:hover {
+  color: #e5f720;
+}
+
+.popup .content-1,
+.content-2 {
+  max-height: 30%;
+  overflow: auto;
+  text-align: center;
+}
+
+.show {
+  visibility: visible;
+  opacity: 100;
+}
+
+#starRating li {
+  display: inline-block;
+}
+
+#playAgain {
+  background-color: #141214;
+  display: block;
+  width: 50%;
+  color: #fff;
+}

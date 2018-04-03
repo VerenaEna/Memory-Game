@@ -20,6 +20,13 @@ const deck = document.getElementById('card-deck');
 let matchedCard = document.getElementsByClassName('match');
 //array opend cards
 let openedCards = [];
+// define modal Variable
+const modal = document.getElementById('popup1');
+//define stars list variable
+const starsList = document.querySelectorAll('.stars li');
+//define close icon
+const closeIcon = document.querySelector('.close');
+
 
 
 /**** All Functions ****/
@@ -173,6 +180,28 @@ function startTimer(){
   }, 1000);
 }
 
+function winner(){
+  if(matchedCard.length == 16){
+    clearInterval(interval);
+    finalTime = timer.innerHTML;
+    // show winner modal
+    modal.classList.add('show');
+    //define star rating Variable
+    const starRating = document.querySelector('.stars').innerHTML;
+    //show move, rating and time on modal
+    document.getElementById('finalMove').innerHTML = moves;
+    document.getElementById('starRating').innerHTML = starRating;
+    document.getElementById('totalTime').innerHTML = finalTime;
+    //TODO: close icon on modal
+    closeModal();
+  };
+}
+
+function playAgain(){
+  modal.classList.remove('show');
+  startGame();
+}
+
 /**** Event Listener ****/
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -188,4 +217,5 @@ for (var i = 0; i < cards.length; i++){
   card = cards[i];
   card.addEventListener('click', displayCard);
   card.addEventListener('click', cardOpen);
+  card.addEventListener('click', winner);
 };
