@@ -57,6 +57,9 @@ function startGame(){
   for (var i = 0; i < stars.length; i++){
     stars[i].style.visibility = "visible";
   }
+  // reset moves
+  moves = 0;
+  counter.innerHTML = moves;
 }
 
  var displayCard = function (){
