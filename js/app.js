@@ -115,7 +115,7 @@ function enable(){
   });
 }
 
-// count player move
+// count player move and...
 function moveCounter(){
   moves++;
   counter.innerHTML = moves;
@@ -126,10 +126,10 @@ function moveCounter(){
     hour = 0;
     startTimer();
   }
-  //set rates based on Moves
+//...set visibility of stars based on each move
   if (moves > 20 && moves < 30){
-    for(i = 0; i < 3; i++){
-      if(i > 1){
+    for(i = 0; i < 3; i++){ // we have 3 stars
+      if(i > 1){ // if 2 is true
         stars[i].style.visibility = "collapse";
       }
     }
