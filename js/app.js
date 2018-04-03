@@ -4,10 +4,11 @@
 let card = document.getElementsByClassName('card');
 let cards = [...card];
 console.log(cards);
-// move Variable
+// define move Variable
 let moves = 0;
 let counter = document.getElementsByClassName('moves');
-
+// define star icon Variable
+const stars = document.querySelector('.stars li');
 //deck of all cards in game
 const deck = document.getElementById('card-deck');
 //variable of matchedCards
@@ -120,6 +121,21 @@ function moveCounter(){
     minute = 0;
     hour = 0;
     startTimer();
+  }
+  //set rates based on Moves
+  if (moves > 23 && moves < 36){
+    for(i = 0; i < 3; i++){
+      if(i > 1){
+        stars[i].style.visibility = "collapse";
+      }
+    }
+  }
+  if(moves > 37){
+    for(i = 0; i < 3; i++){
+      if(i > 0){
+        stars[i].style.visibilty = "collapse";
+      }
+    }
   }
 }
 // define for startTimer
