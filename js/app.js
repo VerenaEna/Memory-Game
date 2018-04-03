@@ -203,6 +203,13 @@ function playAgain(){
   startGame();
 }
 
+function closeModal(){
+  closeIcon.addEventListener('click',function(event){
+    modal.classList.remove('show');
+    startGame();
+  });
+}
+
 //loop to add event listeners to each card
 for (var i = 0; i < cards.length; i++){
   card = cards[i];
