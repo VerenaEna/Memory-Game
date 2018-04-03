@@ -9,6 +9,11 @@ let moves = 0;
 let counter = document.getElementsByClassName('moves');
 // define star icon Variable
 const stars = document.querySelectorAll('.fa-star');
+//define for timer function
+let second = 0;
+let minute = 0;
+let hour = 0;
+let timer = document.querySelector('.timer');
 //deck of all cards in game
 const deck = document.getElementById('card-deck');
 //variable of matchedCards
@@ -143,8 +148,6 @@ function moveCounter(){
   }
 }
 // define for startTimer
-let second = 0, minute = 0, hour = 0;
-let timer = document.querySelector('.timer');
 var interval;
 function startTimer(){
   interval = setInterval(function(){
