@@ -2,13 +2,13 @@
  **** All Variables ****
 */
 // cards array holds all cards
-let card = document.getElementsByClassName('card');
+const card = document.getElementsByClassName('card');
 let cards = [...card];
 console.log(cards);
 
 // define move Variable
 let moves = 0;
-let counter = document.getElementsByClassName('moves');
+const counter = document.getElementsByClassName('moves');
 
 // define star icon Variable
 const stars = document.querySelectorAll('.fa-star');
@@ -17,16 +17,16 @@ const stars = document.querySelectorAll('.fa-star');
 let second = 0;
 let minute = 0;
 let hour = 0;
-let timer = document.querySelector('.timer');
+const timer = document.querySelector('.timer');
 
 // define for startTimer
-var interval;
+let interval;
 
 //deck of all cards in game
 const deck = document.getElementById('card-deck');
 
 //variable of matchedCards
-let matchedCard = document.getElementsByClassName('match');
+const matchedCard = document.getElementsByClassName('match');
 
 //array opend cards
 let openedCards = [];
@@ -89,7 +89,7 @@ function startGame(){
   clearInterval(interval);
 }
 // @description: toggles classes to display cards
- var displayCard = function (){
+function displayCard(){
    this.classList.toggle('open');
    this.classList.toggle('show');
    this.classList.toggle('disabled');
@@ -98,9 +98,9 @@ function startGame(){
 // @description: add/push opened cards to OpenedCards array and
 function cardOpen(){
   openedCards.push(this);
-  let len = openedCards.length;
-  //check if 2 cards match/unmatch
-  if(len === 2){
+  const length = openedCards.length;
+  //check if 2 cards with their type match/unmatch
+  if(length === 2){
     moveCounter();
     if(openedCards[0].type === openedCards[1].type){
       matched();
@@ -163,7 +163,7 @@ function moveCounter(){
   }
 //...set visibility of stars based on each move
   if (moves > 20 && moves < 30){
-    for(i = 0; i < 3; i++){ // we have 3 stars
+    for(i = 0; i < 3; i++){ // for loop bcs we have 3 stars and irrate each
       if(i > 1){ // if 2 is true
         stars[i].style.visibility = "collapse";
       }
@@ -178,7 +178,7 @@ function moveCounter(){
   }
 }
 
-// @description: timer function
+// @description: timer function to show the timer starts: 0 min 0 sec
 function startTimer(){
   interval = setInterval(function(){
     timer.innerHTML = minute + ' min ' + second + ' sec ';
@@ -193,6 +193,7 @@ function startTimer(){
     }
   }, 1000);
 }
+
 // @description: winner modal if player found all 16 pairs
 function winner(){
   if(matchedCard.length == 16){
@@ -210,12 +211,12 @@ function winner(){
     closeModal();
   };
 }
-
+// @description: click on play Again button starts the function - removes the winner modal and restarts the game
 function playAgain(){
   modal.classList.remove('show');
   startGame();
 }
-
+// @description: click on close icon starts the function - removes the winner modal and restart the game
 function closeModal(){
   closeIcon.addEventListener('click',function(event){
     modal.classList.remove('show');
@@ -223,9 +224,9 @@ function closeModal(){
   });
 }
 
-//loop to add event listeners to each card
+//@description: card loop to have event listeners to each card
 for (var i = 0; i < cards.length; i++){
-  card = cards[i];
+  const card = cards[i];
   card.addEventListener('click', displayCard);
   card.addEventListener('click', cardOpen);
   card.addEventListener('click', winner);
