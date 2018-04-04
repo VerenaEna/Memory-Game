@@ -19,6 +19,9 @@ let minute = 0;
 let hour = 0;
 let timer = document.querySelector('.timer');
 
+// define for startTimer
+var interval;
+
 //deck of all cards in game
 const deck = document.getElementById('card-deck');
 
@@ -56,7 +59,7 @@ function shuffle(array) {
 
     return array;
 }
-// @description: shuffles cards when site page is load/refreshed
+// @description: start game when site page is load/refreshed
 document.body.onload = startGame();
 
 // @description: function start game will shuffle and display each card
@@ -116,12 +119,12 @@ function matched(){
   openedCards = [];
 }
 
-//if cards don't match set unmatched, set cards disable
+//if cards don't match set unmatched, set cards disable to reclick
 function unmatched(){
   openedCards[0].classList.add('unmatched');
   openedCards[1].classList.add('unmatched');
   disable();
-  // remove all classLists and enable cards
+  // remove all classLists to get backside and enable cards to click
   setTimeout(function(){
     openedCards[0].classList.remove('show', 'open', 'no-event', 'unmatched');
     openedCards[1].classList.remove('show', 'open', 'no-event', 'unmatched');
@@ -137,7 +140,7 @@ function disable(){
   });
 }
 
-//enable cards and disable matched OpenedCards
+//enable cards to click and disable matched OpenedCards to click
 function enable(){
   Array.prototype.filter.call(cards, function(card){
     card.classList.remove('disabled');
@@ -174,8 +177,7 @@ function moveCounter(){
     }
   }
 }
-// define for startTimer
-var interval;
+
 // @description: timer function
 function startTimer(){
   interval = setInterval(function(){
@@ -198,7 +200,7 @@ function winner(){
     finalTime = timer.innerHTML; //show final Time on modal
     // add class to winner modal
     modal.classList.add('show');// to show on page
-    //define star rating Variable 
+    //define star rating Variable
     const starRating = document.querySelector('.stars').innerHTML;
     //show move, star rating and time on modal
     document.getElementById('finalMove').innerHTML = moves;
